@@ -1,0 +1,9 @@
+To run the example, use
+
+./mkrun
+
+This neural network code is meant to be used in conjunction with the blog post at
+http://lmat.info.tm/blog/cppnn2
+
+Although I made an attempt to use programming best practices, I prefer ease of
+comprehension and readibility over good design.

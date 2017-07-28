@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#cgdb --args \
+./neural
