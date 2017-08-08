@@ -30,7 +30,7 @@ void shallow_ffn::train(matrix const & input, matrix const & expected)
 {
     matrix calculated{feed_forward(input)};
     matrix error{expected - calculated};
-    matrix confidence{sigmoid(calculated, true)};
+    matrix confidence{logistic(calculated, true)};
     /*component-wise multiplication with ::array()*/
     matrix weighted_error{error.array() * confidence.array()};
     matrix adjustment{weighted_error * input.transpose()};

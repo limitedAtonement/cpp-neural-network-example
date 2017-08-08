@@ -2,19 +2,19 @@
 
 #include "util.hpp"
 
-double sigmoid(double value, bool deriv)
+double logistic(double value, bool deriv)
 {
     if (deriv)
-        return sigmoid(value) * (1 - sigmoid(value));
+        return logistic(value) * (1 - logistic(value));
     return 1 / (1 + std::exp(-value));
 }
 
-matrix sigmoid(matrix const & value, bool deriv)
+matrix logistic(matrix const & value, bool deriv)
 {
     matrix ret{value.rows(), value.cols()};
     for (int row{0}; row < value.rows(); ++row)
         for (int col{0}; col < value.cols(); ++col)
-            ret(row, col) = sigmoid(value(row, col), deriv);
+            ret(row, col) = logistic(value(row, col), deriv);
     return ret;
 }
 
@@ -28,4 +28,17 @@ matrix get_random_matrix(int rows, int cols)
         for (int col{0}; col < cols; ++col)
             ret(row, col) = dist(mt);
     return ret;
+}
+
+double average(matrix const & mat)
+{
+    double ret{0};
+    unsigned count{0};
+    for (int row{0}; row < mat.rows(); ++row)
+        for (int col{0}; col < mat.cols(); ++col)
+        {
+            ++count;
+            ret += mat(row, col);
+        }
+    return ret / count;
 }

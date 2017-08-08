@@ -2,9 +2,10 @@
 
 using matrix = Eigen::MatrixXd;
 
-double sigmoid(double value, bool deriv = false);
-matrix sigmoid(matrix const & value, bool deriv = false);
+double logistic(double value, bool deriv = false);
+matrix logistic(matrix const & value, bool deriv = false);
 matrix get_random_matrix(int rows, int cols);
+double average(matrix const &);
 
 template <typename A, typename... B>
 matrix create_row_vector(A arg1, B... args)
